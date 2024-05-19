@@ -6,8 +6,8 @@ return {
 			ft = "fterm_lazygit",
 			cmd = "lazygit",
 			dimensions = {
-				height = 0.95,
-				width = 0.95,
+				height = 1,
+				width = 1,
 			},
 		})
 		vim.keymap.set("n", "<leader>g", function()
