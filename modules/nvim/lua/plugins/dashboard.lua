@@ -28,6 +28,7 @@ return {
 			dashboard.button("g", "   Find words", ":Telescope live_grep <CR>"),
 		}
 		dashboard.section.bottom_buttons.val = {
+			dashboard.button("o", "󱓩   Open Obsidian Vault", ":!tmux-sessionizer $OBSIDIAN_DIRECTORY<CR>"),
 			dashboard.button("c", "   Configure Dotfiles", ":!tmux-sessionizer $(readlink -f $DOTFILES)<CR>"),
 			dashboard.button("u", "󰚰   Update Plugins", "<cmd>lua require('lazy').sync()<CR>"),
 			dashboard.button("q", "   Quit NVIM", ":qa<CR>"),
