@@ -10,10 +10,8 @@ return {
 	},
 	config = function()
 		local alpha = require("alpha")
-		local dashboard = require("alpha.themes.startify")
+		local dashboard = require("alpha.themes.dashboard")
 		local ascii = require("ascii")
-		-- local telescope = require("telescope")
-		-- telescope.load_extension("ascii")
 
 		dashboard.section.header.val = ascii.get_random("text", "neovim")
 		dashboard.section.header.opts = {
@@ -21,19 +19,18 @@ return {
 			position = "center",
 			-- shrink_margin = true,
 		}
-		dashboard.section.mru.val = {}
-		dashboard.section.top_buttons.val = {
-			dashboard.button("e", "   New file", ":ene <BAR> startinsert <CR>"),
-			dashboard.button("f", "󰱽   Open file", ":Telescope find_files <CR>"),
-			dashboard.button("g", "   Find words", ":Telescope live_grep <CR>"),
+		dashboard.section.buttons.val = {
+			dashboard.button("r", "   [R]ecent", ":Telescope oldfiles <CR>"),
+			dashboard.button("e", "   N[e]w file", ":ene <BAR> startinsert <CR>"),
+			dashboard.button("f", "󰱽   Open [f]ile", ":Telescope find_files <CR>"),
+			dashboard.button("g", "   [G]rep files", ":Telescope live_grep <CR>"),
+			dashboard.button("v", "󱓩   Open Obsidian [V]ault", ":!tmux-sessionizer $OBSIDIAN_DIRECTORY <CR>"),
+			dashboard.button("c", "   [C]onfigure Dotfiles", ":!tmux-sessionizer $(readlink -f $DOTFILES) <CR>"),
+			dashboard.button("u", "󰚰   [U]pdate Plugins", "<cmd>lua require('lazy').sync() <CR>"),
+			dashboard.button("d", "   [D]ocs Search", ":Telescope help_tags <CR>"),
+			dashboard.button("x", "   E[x]it NVIM", ":qa <CR>"),
 		}
-		dashboard.section.bottom_buttons.val = {
-			dashboard.button("o", "󱓩   Open Obsidian Vault", ":!tmux-sessionizer $OBSIDIAN_DIRECTORY<CR>"),
-			dashboard.button("c", "   Configure Dotfiles", ":!tmux-sessionizer $(readlink -f $DOTFILES)<CR>"),
-			dashboard.button("u", "󰚰   Update Plugins", "<cmd>lua require('lazy').sync()<CR>"),
-			dashboard.button("q", "   Quit NVIM", ":qa<CR>"),
-		}
-
+		dashboard.section.footer.val = "Create and Evolve"
 		alpha.setup(dashboard.opts)
 	end,
 }
