@@ -1,8 +1,5 @@
 require("telescope").setup({
 	pickers = {
-		find_files = {
-			find_command = { "fd", "--strip-cwd-prefix", "--exclude", ".git" },
-		},
 		oldfiles = {
 			only_cwd = true,
 		},
