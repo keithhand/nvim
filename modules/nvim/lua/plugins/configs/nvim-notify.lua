@@ -1,6 +1,6 @@
 return {
 	render = "wrapped-compact",
 	stages = "slide",
-	timeout = 500,
+	timeout = 1000,
 	max_width = 37,
 }

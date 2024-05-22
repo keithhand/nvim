@@ -1,6 +1,7 @@
 require("telescope").setup({
 	pickers = {
 		oldfiles = {
+			initial_mode = "normal",
 			only_cwd = true,
 		},
 	},
