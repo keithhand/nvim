@@ -174,6 +174,8 @@ return { -- LSP Configuration & Plugins
 					},
 				},
 			},
+
+			terraformls = {},
 		}
 
 		-- Ensure the servers and tools above are installed
