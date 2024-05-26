@@ -83,8 +83,12 @@ return {
 				n = { ":ObsidianNewWithTemplate <cr>", "Create a [n]ew note" },
 				d = { ":ObsidianToday <cr>", "Open to[d]ay's journal entry" },
 				j = {
-					":ObsidianDailies -" .. time_between(FIRST_JOURNAL_ENTRY, now()) .. "<cr>",
+					":ObsidianDailies -" .. time_between(FIRST_JOURNAL_ENTRY, now()) .. "<cr><esc>",
 					"Open [j]ournal browser",
+				},
+				g = {
+					":ObsidianSearch <cr>",
+					"[G]rep Obisdian notes",
 				},
 			},
 		}, { prefix = "<leader>" })
