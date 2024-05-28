@@ -28,7 +28,6 @@ vim.keymap.set(
 )
 
 -- imported from kickstart.nvim
--- TODO: merge into above sections or remove
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true

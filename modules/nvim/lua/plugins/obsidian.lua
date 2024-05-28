@@ -67,7 +67,6 @@ return {
 				folder = TEMPLATE_DIRECTORY,
 				substitutions = {
 					daily_journal_count = function()
-						-- TODO: figure out how to make this work on missed days
 						return time_between(FIRST_JOURNAL_ENTRY, now()) + 1
 					end,
 				},
@@ -76,7 +75,6 @@ return {
 
 		vim.opt.conceallevel = 2
 		vim.api.nvim_create_user_command("ObsidianNewWithTemplate", createNoteWithDefaultTemplate, {})
-		-- TODO: merge all random keybinds into one place and use which-key
 		require("which-key").register({
 			o = {
 				name = "[O]bsidian",

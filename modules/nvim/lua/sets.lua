@@ -33,7 +33,6 @@ vim.g.maplocalleader = " "
 vim.opt.exrc = true
 
 -- imported from kickstart.nvim
--- TODO: merge into above sections or remove
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
