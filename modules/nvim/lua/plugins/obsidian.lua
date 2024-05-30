@@ -1,4 +1,4 @@
-local OBSIDIAN_VAULT = "$HOME/obsidian/Personal Vault"
+local OBSIDIAN_VAULT_ENV = "OBSIDIAN_DIRECTORY"
 local TEMPLATE_DIRECTORY = "900 - Templates"
 local NOTES_DIRECTORY = "000 - Zettelkasten"
 local NOTE_TEMPLATE = "Core Zettel Idea"
@@ -55,7 +55,7 @@ return {
 			workspaces = {
 				{
 					name = "personal",
-					path = OBSIDIAN_VAULT,
+					path = vim.env[OBSIDIAN_VAULT_ENV],
 				},
 			},
 			daily_notes = {
