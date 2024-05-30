@@ -29,13 +29,14 @@ local createNoteWithDefaultTemplate = function()
 	obsidian:open_note(note, { sync = true })
 end
 
+local isVaultDirectory = function()
+	local obsidianDirectory = vim.fn.resolve(vim.env[OBSIDIAN_VAULT_ENV])
+	return vim.loop.cwd() == obsidianDirectory
+end
+
 return {
 	"epwalsh/obsidian.nvim",
-	lazy = true,
-	event = {
-		"BufReadPre " .. vim.fn.expand(OBSIDIAN_VAULT) .. "/**",
-		"BufNewFile " .. vim.fn.expand(OBSIDIAN_VAULT) .. "/**",
-	},
+	enabled = isVaultDirectory(),
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope.nvim",
@@ -76,7 +77,7 @@ return {
 		vim.opt.conceallevel = 2
 		vim.api.nvim_create_user_command("ObsidianNewWithTemplate", createNoteWithDefaultTemplate, {})
 		require("which-key").register({
-			o = {
+			["<leader>o"] = {
 				name = "[O]bsidian",
 				n = { ":ObsidianNewWithTemplate <cr>", "Create a [n]ew note" },
 				d = { ":ObsidianToday <cr>", "Open to[d]ay's journal entry" },
@@ -89,6 +90,6 @@ return {
 					"[G]rep Obisdian notes",
 				},
 			},
-		}, { prefix = "<leader>" })
+		})
 	end,
 }
