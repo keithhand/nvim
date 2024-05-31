@@ -1,10 +1,6 @@
 -- alpha-nvim
 -- https://github.com/goolord/alpha-nvim
 
-local isInsideTmux = function()
-	return vim.env.TMUX ~= nil
-end
-
 local isGitHubRepo = function()
 	local git_dir = vim.loop.cwd() .. "/.git"
 	return vim.loop.fs_stat(git_dir) ~= nil
@@ -24,13 +20,13 @@ local buttons = {
 	{ enabled = isGitHubRepo(), "o", "   [O]pen GitHub Repo", ":!git open <CR>" },
 	-- Open common nvim projects
 	{
-		enabled = not cwdMatchesEnv("DOTFILES") and isInsideTmux(),
+		enabled = not cwdMatchesEnv("DOTFILES"),
 		"c",
 		"   [C]onfigure Dotfiles",
 		":!tmux-sessionizer $(readlink -f $DOTFILES) <CR>",
 	},
 	{
-		enabled = not cwdMatchesEnv("OBSIDIAN_DIRECTORY") and isInsideTmux(),
+		enabled = not cwdMatchesEnv("OBSIDIAN_DIRECTORY"),
 		"v",
 		"󱓩   Open Obsidian [V]ault",
 		":!tmux-sessionizer $OBSIDIAN_DIRECTORY <CR>",
