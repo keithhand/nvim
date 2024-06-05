@@ -175,6 +175,7 @@ return { -- LSP Configuration & Plugins
 				},
 			},
 
+			gopls = {},
 			terraformls = {},
 		}
 
@@ -192,6 +193,7 @@ return { -- LSP Configuration & Plugins
 		vim.list_extend(ensure_installed, {
 			"stylua", -- Used to format Lua code
 			"markdownlint",
+			"golangci-lint",
 			-- "mdformat",
 			"shellcheck",
 			"shfmt",
