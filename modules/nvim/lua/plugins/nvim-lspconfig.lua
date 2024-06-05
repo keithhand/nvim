@@ -177,6 +177,7 @@ return { -- LSP Configuration & Plugins
 
 			gopls = {},
 			terraformls = {},
+			yamlls = {},
 		}
 
 		-- Ensure the servers and tools above are installed
