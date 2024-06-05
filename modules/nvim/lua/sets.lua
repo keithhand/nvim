@@ -23,8 +23,6 @@ vim.g.have_nerd_font = true
 
 vim.opt.scrolloff = 8
 
-vim.opt.updatetime = 250
-
 vim.opt.colorcolumn = "80"
 
 vim.g.mapleader = " "
