@@ -3,6 +3,7 @@ vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 -- quick exit insert mode
 vim.keymap.set("i", "jj", "<Esc>")
+vim.keymap.set("i", "kk", "<Esc>")
 
 -- adds ability to move highlighted text up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
