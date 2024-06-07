@@ -1,6 +1,9 @@
 -- tmux-sessionizer
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
+-- disable mouse clicks
+vim.keymap.set("n", "<LeftMouse>", "<Nop>")
+
 -- quick exit insert mode
 vim.keymap.set("i", "jj", "<Esc>")
 vim.keymap.set("i", "kk", "<Esc>")
