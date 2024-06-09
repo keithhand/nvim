@@ -135,6 +135,23 @@ return {
 	},
 
 	{
+		"stevearc/oil.nvim",
+		opts = {
+			default_file_explorer = true,
+			open_fn = require("lazy.util").open,
+		},
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
+
+	{
+		"rmagatti/gx-extended.nvim",
+		keys = { "gx" },
+		opts = {
+			open_fn = require("lazy.util").open,
+		},
+	},
+
+	{
 		"nvim-neo-tree/neo-tree.nvim",
 		version = "*",
 		dependencies = {
@@ -151,8 +168,9 @@ return {
 		end,
 		opts = {
 			filesystem = {
-				hijack_netrw_behavior = "open_current",
+				follow_current_file = { enabled = true },
 				window = {
+					width = 30,
 					mappings = {
 						["\\"] = "close_window",
 					},
