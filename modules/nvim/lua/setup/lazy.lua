@@ -1,6 +1,6 @@
 local config = {
 	PLUGIN_DIRECTORIES = {
-		"keithhand.plugins",
+		"setup.plugins",
 	},
 	lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim",
 	lazyrepo = "https://github.com/folke/lazy.nvim.git",

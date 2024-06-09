@@ -1,12 +1,11 @@
--- obsidian
 local config = {
-  OBSIDIAN_VAULT_ENV = "OBSIDIAN_DIRECTORY",
-  TEMPLATE_DIRECTORY = "900 - Templates",
-  NOTES_DIRECTORY = "000 - Zettelkasten",
-  NOTE_TEMPLATE = "Core Zettel Idea",
-  JOURNAL_DIRECTORY = "200 - Daily Journal",
-  JOURNAL_TEMPLATE = "Core Journal Entry",
-  FIRST_JOURNAL_ENTRY = os.time({ day = 09, month = 05, year = 2024 }),
+	OBSIDIAN_VAULT_ENV = "OBSIDIAN_DIRECTORY",
+	TEMPLATE_DIRECTORY = "900 - Templates",
+	NOTES_DIRECTORY = "000 - Zettelkasten",
+	NOTE_TEMPLATE = "Core Zettel Idea",
+	JOURNAL_DIRECTORY = "200 - Daily Journal",
+	JOURNAL_TEMPLATE = "Core Journal Entry",
+	FIRST_JOURNAL_ENTRY = os.time({ day = 09, month = 05, year = 2024 }),
 }
 
 local isVaultDirectory = function()
@@ -37,62 +36,57 @@ local createNoteWithDefaultTemplate = function()
 	obsidian:open_note(note, { sync = true })
 end
 
+local now = function()
+	local now = os.date("*t", os.time())
+	return os.time({ day = now.day, month = now.month, year = now.year })
+end
+
+local timeBetween = function(end_time, start_time)
+	return math.floor(os.difftime(start_time, end_time) / (24 * 60 * 60))
+end
+
+local setupConfig = function()
+	require("obsidian").setup({
+		workspaces = {
+			{
+				name = "personal",
+				path = vim.env[config.OBSIDIAN_VAULT_ENV],
+			},
+		},
+		daily_notes = {
+			folder = config.JOURNAL_DIRECTORY,
+			template = config.JOURNAL_TEMPLATE,
+		},
+		notes_subdir = config.NOTES_DIRECTORY,
+		templates = {
+			folder = config.TEMPLATE_DIRECTORY,
+			substitutions = {
+				daily_journal_count = function()
+					return timeBetween(config.FIRST_JOURNAL_ENTRY, now()) + 1
+				end,
+			},
+		},
+	})
+
+	vim.opt.conceallevel = 2
+	vim.api.nvim_create_user_command("ObsidianNewWithTemplate", createNoteWithDefaultTemplate, {})
+	require("which-key").register({
+		["<leader>o"] = {
+			name = "[O]bsidian",
+			n = { ":ObsidianNewWithTemplate <cr>", "Create a [n]ew note" },
+			d = { ":ObsidianToday <cr>", "Open to[d]ay's journal entry" },
+			j = {
+				":ObsidianDailies -" .. timeBetween(config.FIRST_JOURNAL_ENTRY, now()) .. "<cr><esc>",
+				"Open [j]ournal browser",
+			},
+			g = {
+				":ObsidianSearch <cr>",
+				"[G]rep Obisdian notes",
+			},
+		},
+	})
+end
 return {
-	"epwalsh/obsidian.nvim",
-	enabled = isVaultDirectory(),
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-		"nvim-telescope/telescope.nvim",
-		"nvim-treesitter/nvim-treesitter",
-	},
-	config = function()
-		local now = function()
-			local now = os.date("*t", os.time())
-			return os.time({ day = now.day, month = now.month, year = now.year })
-		end
-
-		local time_between = function(end_time, start_time)
-			return math.floor(os.difftime(start_time, end_time) / (24 * 60 * 60))
-		end
-
-		require("obsidian").setup({
-			workspaces = {
-				{
-					name = "personal",
-					path = vim.env[config.OBSIDIAN_VAULT_ENV],
-				},
-			},
-			daily_notes = {
-				folder = config.JOURNAL_DIRECTORY,
-				template = config.JOURNAL_TEMPLATE,
-			},
-			notes_subdir = config.NOTES_DIRECTORY,
-			templates = {
-				folder = config.TEMPLATE_DIRECTORY,
-				substitutions = {
-					daily_journal_count = function()
-						return time_between(config.FIRST_JOURNAL_ENTRY, now()) + 1
-					end,
-				},
-			},
-		})
-
-		vim.opt.conceallevel = 2
-		vim.api.nvim_create_user_command("ObsidianNewWithTemplate", createNoteWithDefaultTemplate, {})
-		require("which-key").register({
-			["<leader>o"] = {
-				name = "[O]bsidian",
-				n = { ":ObsidianNewWithTemplate <cr>", "Create a [n]ew note" },
-				d = { ":ObsidianToday <cr>", "Open to[d]ay's journal entry" },
-				j = {
-					":ObsidianDailies -" .. time_between(config.FIRST_JOURNAL_ENTRY, now()) .. "<cr><esc>",
-					"Open [j]ournal browser",
-				},
-				g = {
-					":ObsidianSearch <cr>",
-					"[G]rep Obisdian notes",
-				},
-			},
-		})
-	end,
+	setupConfig,
+	isVaultDirectory,
 }

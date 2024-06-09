@@ -1,5 +1,3 @@
--- alpha-nvim
-
 function isInsideTmux()
 	return vim.env.TMUX ~= nil
 end
@@ -9,7 +7,7 @@ function isGitHubRepo()
 	return vim.loop.fs_stat(git_dir) ~= nil
 end
 
-function cwdMatchesEnv (variable)
+function cwdMatchesEnv(variable)
 	local envRepoDirectory = vim.fn.resolve(vim.env[variable])
 	return vim.loop.cwd() == envRepoDirectory
 end
@@ -47,37 +45,23 @@ local footers = {
 	"Be Present",
 }
 
-return {
-	"goolord/alpha-nvim",
-	dependencies = {
-		"nvim-tree/nvim-web-devicons",
-		"nvim-lua/plenary.nvim",
-		{ "MaximilianLloyd/ascii.nvim", dependencies = "MunifTanjim/nui.nvim" },
-	},
-	config = function()
-		local alpha = require("alpha")
-		local dashboard = require("alpha.themes.dashboard")
-		local ascii = require("ascii")
+local alpha = require("alpha")
+local dashboard = require("alpha.themes.dashboard")
+local ascii = require("ascii")
 
-		dashboard.section.header.val = ascii.get_random("text", "neovim")
-		dashboard.section.header.opts = {
-			hl = "Type",
-			position = "center",
-			-- shrink_margin = true,
-		}
-		dashboard.section.buttons.val = {}
-		for i in pairs(buttons) do
-      local key, description, command, enabled =
-        buttons[i][1],
-        buttons[i][2],
-        buttons[i][3],
-        buttons[i].enabled
-			if enabled ~= false then
-				table.insert(dashboard.section.buttons.val, dashboard.button(key, description, command))
-			end
-		end
-		math.randomseed(os.time())
-		dashboard.section.footer.val = footers[math.random(#footers)]
-		alpha.setup(dashboard.opts)
-	end,
+dashboard.section.header.val = ascii.get_random("text", "neovim")
+dashboard.section.header.opts = {
+	hl = "Type",
+	position = "center",
+	-- shrink_margin = true,
 }
+dashboard.section.buttons.val = {}
+for i in pairs(buttons) do
+	local key, description, command, enabled = buttons[i][1], buttons[i][2], buttons[i][3], buttons[i].enabled
+	if enabled ~= false then
+		table.insert(dashboard.section.buttons.val, dashboard.button(key, description, command))
+	end
+end
+math.randomseed(os.time())
+dashboard.section.footer.val = footers[math.random(#footers)]
+alpha.setup(dashboard.opts)
