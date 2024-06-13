@@ -12,7 +12,7 @@ end
 -- Configure LSP
 local lsp_zero = require("lsp-zero")
 lsp_zero.on_attach(function(_, bufnr)
-	lsp_zero.default_keymaps({ buffer = bufnr })
+	lsp_zero.default_keymaps({ buffer = bufnr, preserve_mappings = false })
 end)
 
 -- Installation of servers and tools
