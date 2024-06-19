@@ -6,7 +6,13 @@ return {
 	"shfmt",
 
 	gopls = {
-		gofumpt = true,
+		settings = {
+			analyses = {
+				unusedparams = true,
+			},
+			staticcheck = true,
+			gofumpt = true,
+		},
 	},
 	"golangci-lint",
 
