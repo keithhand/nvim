@@ -167,9 +167,11 @@ return {
 			require(pluginConfigs("neo-tree"))
 		end,
 		opts = {
+			close_if_last_window = true,
 			filesystem = {
 				follow_current_file = { enabled = true },
 				window = {
+					position = "right",
 					width = 30,
 					mappings = {
 						["\\"] = "close_window",
