@@ -1,15 +1,10 @@
-local PLUGIN_CONFIGS = "keithhand.plugins"
-local pluginConfigs = function(config)
-	return PLUGIN_CONFIGS .. "." .. config
-end
-
 return {
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		dependencies = { "hrsh7th/nvim-cmp" },
 		config = function()
-			require(pluginConfigs("autopairs"))
+			require("custom.autopairs")
 		end,
 	},
 
@@ -21,7 +16,7 @@ return {
 			"famiu/bufdelete.nvim",
 		},
 		config = function()
-			require(pluginConfigs("bufferline"))
+			require("custom.bufferline")
 		end,
 	},
 
@@ -40,42 +35,26 @@ return {
 			{ "MaximilianLloyd/ascii.nvim", dependencies = "MunifTanjim/nui.nvim" },
 		},
 		config = function()
-			require(pluginConfigs("dashboard"))
+			require("custom.dashboard")
 		end,
 	},
 
 	{
 		"stevearc/conform.nvim",
 		lazy = false,
-		keys = {},
-		opts = {
-			notify_on_error = false,
-			format_on_save = function(bufnr)
-				local disable_filetypes = { c = true, cpp = true }
-				return {
-					timeout_ms = 500,
-					lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
-				}
-			end,
-			formatters_by_ft = {
-				lua = { "stylua" },
-				sh = { "shfmt" },
-				zsh = { "shfmt" },
-			},
-		},
 	},
 
 	{
 		"numToStr/FTerm.nvim",
 		config = function()
-			require(pluginConfigs("lazygit"))
+			require("custom.lazygit")
 		end,
 	},
 
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {
-			on_attach = require(pluginConfigs("gitsigns")),
+			on_attach = require("custom.gitsigns"),
 		},
 	},
 
@@ -84,7 +63,7 @@ return {
 		branch = "harpoon2",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
-			require("harpoon")
+			require("custom.harpoon")
 		end,
 	},
 
@@ -97,7 +76,7 @@ return {
 		"mfussenegger/nvim-lint",
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
-			require(pluginConfigs("lint"))
+			require("custom.lint")
 		end,
 	},
 
@@ -114,7 +93,7 @@ return {
 			"L3MON4D3/LuaSnip",
 		},
 		config = function()
-			require(pluginConfigs("lsp"))
+			require("custom.lsp")
 		end,
 	},
 
@@ -130,7 +109,7 @@ return {
 	{
 		"echasnovski/mini.nvim",
 		config = function()
-			require(pluginConfigs("mini"))
+			require("custom.mini")
 		end,
 	},
 
@@ -164,32 +143,19 @@ return {
 			{ "\\", ":Neotree reveal<CR>", { desc = "NeoTree reveal" } },
 		},
 		init = function()
-			require(pluginConfigs("neo-tree"))
+			require("custom.neo-tree")
 		end,
-		opts = {
-			close_if_last_window = true,
-			filesystem = {
-				follow_current_file = { enabled = true },
-				window = {
-					position = "right",
-					width = 30,
-					mappings = {
-						["\\"] = "close_window",
-					},
-				},
-			},
-		},
 	},
 
 	{
 		"epwalsh/obsidian.nvim",
-		enabled = require(pluginConfigs("obsidian")).isVaultDirectory,
+		enabled = require("custom.obsidian").isVaultDirectory,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope.nvim",
 			"nvim-treesitter/nvim-treesitter",
 		},
-		config = require(pluginConfigs("obsidian")).setupConfig,
+		config = require("custom.obsidian").setupConfig,
 	},
 
 	{
@@ -210,7 +176,7 @@ return {
 			{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 		},
 		config = function()
-			require(pluginConfigs("telescope"))
+			require("custom.telescope")
 		end,
 	},
 
@@ -219,15 +185,8 @@ return {
 			"catppuccin/nvim",
 			name = "catppuccin",
 			priority = 1000,
-			opts = {
-				flavour = "mocha",
-				integrations = {
-					gitsigns = true,
-					treesitter = true,
-				},
-			},
 			config = function()
-				require(pluginConfigs("theme"))
+				require("custom.theme")
 			end,
 		},
 	},
@@ -246,27 +205,12 @@ return {
 		dependencies = "nvim-treesitter/nvim-treesitter-context",
 		build = ":TSUpdate",
 		config = function()
-			require(pluginConfigs("treesitter"))
+			require("custom.treesitter")
 		end,
 	},
 
 	{
 		"folke/trouble.nvim",
-		opts = {
-			modes = {
-				diagnostics = {
-					groups = {
-						{ "filename", format = "{file_icon} {basename:Title} {count}" },
-					},
-					preview = {
-						type = "split",
-						relative = "win",
-						position = "right",
-						size = 0.3,
-					},
-				},
-			},
-		},
 		cmd = "Trouble",
 		keys = {
 			{
@@ -300,7 +244,7 @@ return {
 		"folke/which-key.nvim",
 		event = "VimEnter",
 		config = function()
-			require(pluginConfigs("which-key"))
+			require("custom.which-key")
 		end,
 	},
 }

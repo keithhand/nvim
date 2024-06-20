@@ -1,3 +1,17 @@
+require("neo-tree").setup({
+	close_if_last_window = true,
+	filesystem = {
+		follow_current_file = { enabled = true },
+		window = {
+			position = "right",
+			width = 30,
+			mappings = {
+				["\\"] = "close_window",
+			},
+		},
+	},
+})
+
 vim.api.nvim_create_autocmd("BufEnter", {
 	-- make a group to be able to delete it later
 	group = vim.api.nvim_create_augroup("NeoTreeInit", { clear = true }),
