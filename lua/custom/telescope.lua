@@ -1,8 +1,14 @@
 local config = function()
+	local actions = require "telescope.actions"
 	require("telescope").setup({
 		pickers = {
 			buffers = {
 				initial_mode = "normal",
+				mappings = {
+					["n"] = {
+						["<C-d>"] = actions.delete_buffer + actions.move_to_top,
+					},
+				},
 			},
 			oldfiles = {
 				initial_mode = "normal",
