@@ -257,4 +257,28 @@ return {
 			require("custom.inc-rename")
 		end,
 	},
+
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+		config = function()
+			require("custom.noice")
+		end,
+	},
+
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+			"folke/noice.nvim",
+		},
+		config = function()
+			require("custom.lualine")
+		end,
+	},
 }
