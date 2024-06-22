@@ -1,24 +1,24 @@
-function isInsideTmux()
+local isInsideTmux = function()
 	return vim.env.TMUX ~= nil
 end
 
-function isGitHubRepo()
+local isGitHubRepo = function()
 	local git_dir = vim.loop.cwd() .. "/.git"
 	return vim.loop.fs_stat(git_dir) ~= nil
 end
 
-function cwdMatchesEnv(variable)
+local cwdMatchesEnv = function(variable)
 	local envRepoDirectory = vim.fn.resolve(vim.env[variable])
 	return vim.loop.cwd() == envRepoDirectory
 end
 
 local buttons = {
 	-- File actions
-	{ "r", "   [R]ecent", ":Telescope oldfiles <CR>" },
+	{ ".", "   Recent f[i]les", ":Telescope oldfiles <CR>" },
 	{ "e", "   N[e]w file", ":ene <BAR> startinsert <CR>" },
 	{ "f", "󰱽   Open [f]ile", ":Telescope find_files <CR>" },
 	{ "g", "   [G]rep files", ":Telescope live_grep <CR>" },
-	{ enabled = isGitHubRepo(), "o", "   [O]pen GitHub Repo", ":!git open <CR>" },
+	{ enabled = isGitHubRepo(), "r", "   Open GitHub [R]epo", ":!git open <CR>" },
 	-- Open common nvim projects
 	{
 		enabled = not cwdMatchesEnv("DOTFILES") and isInsideTmux(),
@@ -34,7 +34,7 @@ local buttons = {
 	},
 	-- Nvim controls
 	{ "u", "󰚰   [U]pdate Plugins", "<cmd>lua require('lazy').sync() <CR>" },
-	{ "d", "   [D]ocs Search", ":Telescope help_tags <CR>" },
+	{ "h", "   Search [H]elp", ":Telescope help_tags <CR>" },
 	{ "x", "   E[x]it NVIM", ":qa <CR>" },
 }
 
