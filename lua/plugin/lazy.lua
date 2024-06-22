@@ -1,6 +1,6 @@
 local config = {
-	PLUGIN_DIRECTORIES = {
-		"setup.plugins",
+	plugin_directories = {
+		"plugin.imports",
 	},
 	lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim",
 	lazyrepo = "https://github.com/folke/lazy.nvim.git",
@@ -8,7 +8,7 @@ local config = {
 
 local formatPluginDirectories = function()
 	local d = {}
-	for _, value in pairs(config.PLUGIN_DIRECTORIES) do
+	for _, value in pairs(config.plugin_directories) do
 		table.insert(d, { import = value })
 	end
 	return d

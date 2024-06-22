@@ -1,11 +1,11 @@
 -- Set up languages
 local servers, tools = {}, {}
-local languages = require("keithhand.langs")
-for _, value in pairs(vim.tbl_keys(languages)) do
+local lsps = require("lsps")
+for _, value in pairs(vim.tbl_keys(lsps)) do
 	if type(value) == "string" then
-		servers[value] = languages[value]
+		servers[value] = lsps[value]
 	elseif type(value) == "number" then
-		table.insert(tools, languages[value])
+		table.insert(tools, lsps[value])
 	end
 end
 

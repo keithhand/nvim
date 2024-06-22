@@ -25,9 +25,6 @@ vim.opt.scrolloff = 8
 
 vim.opt.colorcolumn = "80"
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 vim.opt.exrc = true
 
 -- imported from kickstart.nvim

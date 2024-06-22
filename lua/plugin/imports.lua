@@ -4,7 +4,7 @@ return {
 		event = "InsertEnter",
 		dependencies = { "hrsh7th/nvim-cmp" },
 		config = function()
-			require("custom.autopairs")
+			require("plugin.config.autopairs")
 		end,
 	},
 
@@ -16,7 +16,7 @@ return {
 			"famiu/bufdelete.nvim",
 		},
 		config = function()
-			require("custom.bufferline")
+			require("plugin.config.bufferline")
 		end,
 	},
 
@@ -35,7 +35,7 @@ return {
 			{ "MaximilianLloyd/ascii.nvim", dependencies = "MunifTanjim/nui.nvim" },
 		},
 		config = function()
-			require("custom.dashboard")
+			require("plugin.config.dashboard")
 		end,
 	},
 
@@ -43,21 +43,21 @@ return {
 		"stevearc/conform.nvim",
 		lazy = false,
 		config = function()
-			require("custom.conform")
+			require("plugin.config.conform")
 		end,
 	},
 
 	{
 		"numToStr/FTerm.nvim",
 		config = function()
-			require("custom.lazygit")
+			require("plugin.config.lazygit")
 		end,
 	},
 
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {
-			on_attach = require("custom.gitsigns"),
+			on_attach = require("plugin.config.gitsigns"),
 		},
 	},
 
@@ -66,7 +66,7 @@ return {
 		branch = "harpoon2",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
-			require("custom.harpoon")
+			require("plugin.config.harpoon")
 		end,
 	},
 
@@ -79,7 +79,7 @@ return {
 		"mfussenegger/nvim-lint",
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
-			require("custom.lint")
+			require("plugin.config.lint")
 		end,
 	},
 
@@ -96,7 +96,7 @@ return {
 			"L3MON4D3/LuaSnip",
 		},
 		config = function()
-			require("custom.lsp")
+			require("plugin.config.lsp")
 		end,
 	},
 
@@ -112,7 +112,7 @@ return {
 	{
 		"echasnovski/mini.nvim",
 		config = function()
-			require("custom.mini")
+			require("plugin.config.mini")
 		end,
 	},
 
@@ -146,19 +146,19 @@ return {
 			{ "\\", ":Neotree reveal<CR>", { desc = "NeoTree reveal" } },
 		},
 		init = function()
-			require("custom.neo-tree")
+			require("plugin.config.neo-tree")
 		end,
 	},
 
 	{
 		"epwalsh/obsidian.nvim",
-		enabled = require("custom.obsidian").isVaultDirectory,
+		enabled = require("plugin.config.obsidian").isVaultDirectory,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope.nvim",
 			"nvim-treesitter/nvim-treesitter",
 		},
-		config = require("custom.obsidian").setupConfig,
+		config = require("plugin.config.obsidian").setupConfig,
 	},
 
 	{
@@ -179,7 +179,7 @@ return {
 			{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 		},
 		config = function()
-			require("custom.telescope")
+			require("plugin.config.telescope")
 		end,
 	},
 
@@ -189,7 +189,7 @@ return {
 			name = "catppuccin",
 			priority = 1000,
 			config = function()
-				require("custom.theme")
+				require("plugin.config.theme")
 			end,
 		},
 	},
@@ -208,7 +208,7 @@ return {
 		dependencies = "nvim-treesitter/nvim-treesitter-context",
 		build = ":TSUpdate",
 		config = function()
-			require("custom.treesitter")
+			require("plugin.config.treesitter")
 		end,
 	},
 
@@ -247,14 +247,14 @@ return {
 		"folke/which-key.nvim",
 		event = "VimEnter",
 		config = function()
-			require("custom.which-key")
+			require("plugin.config.which-key")
 		end,
 	},
 
 	{
 		"smjonas/inc-rename.nvim",
 		config = function()
-			require("custom.inc-rename")
+			require("plugin.config.inc-rename")
 		end,
 	},
 
@@ -267,7 +267,7 @@ return {
 			"rcarriga/nvim-notify",
 		},
 		config = function()
-			require("custom.noice")
+			require("plugin.config.noice")
 		end,
 	},
 
@@ -278,7 +278,7 @@ return {
 			"folke/noice.nvim",
 		},
 		config = function()
-			require("custom.lualine")
+			require("plugin.config.lualine")
 		end,
 	},
 }
