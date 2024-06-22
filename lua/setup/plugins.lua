@@ -250,4 +250,11 @@ return {
 			require("custom.which-key")
 		end,
 	},
+
+	{
+		"smjonas/inc-rename.nvim",
+		config = function()
+			require("custom.inc-rename")
+		end,
+	},
 }

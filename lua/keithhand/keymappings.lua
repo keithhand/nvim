@@ -26,13 +26,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
--- find and replace
-vim.keymap.set(
-	"n",
-	"<leader>f",
-	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-	{ desc = "[F]ind and replace word" }
-)
 
 -- Clear hlsearch on pressing <Esc>
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
