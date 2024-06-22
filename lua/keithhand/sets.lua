@@ -64,3 +64,10 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
+
+-- Adds zsh filetype to stowed dotfiles files
+vim.filetype.add({
+	pattern = {
+		[".*/dotfiles/.*/dot[-]zsh.*"] = "zsh",
+	},
+})
