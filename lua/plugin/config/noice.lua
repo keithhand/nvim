@@ -1,19 +1,34 @@
+local popupView = {
+	filter_options = {},
+	border = {
+		style = "none",
+		padding = { 1, 1 },
+	},
+	position = {
+		col = "50%",
+		row = 9,
+	},
+	size = {
+		width = 50,
+	},
+}
+
 require("noice").setup({
 	views = {
-		cmdline_popup = {
-			position = {
-				row = 9,
-				col = "80%",
-			},
-			border = {
-				style = "none",
-				padding = { 1, 0 },
-			},
-			filter_options = {},
+		cmdline_popup = vim.tbl_deep_extend("force", popupView, {
 			win_options = {
 				winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+				winblend = 0,
 			},
-		},
+		}),
+		cmdline_popupmenu = vim.tbl_deep_extend("force", popupView, {
+			border = {
+				padding = { 0, 0 },
+			},
+			position = {
+				row = popupView.position.row + 2,
+			},
+		}),
 	},
 	lsp = {
 		-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
