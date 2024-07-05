@@ -8,6 +8,7 @@ require("conform").setup({
 		}
 	end,
 	formatters_by_ft = {
+		yaml = { "yamlfmt" },
 		lua = { "stylua" },
 		sh = { "shfmt" },
 		zsh = { "shfmt" },
