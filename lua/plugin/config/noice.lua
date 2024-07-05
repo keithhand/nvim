@@ -52,6 +52,8 @@ require("notify").setup({
 	background_colour = "#000000",
 	render = "wrapped-compact",
 	max_width = 33,
+	level = 3,
+	timeout = 200,
 })
 
 local telescope = require("telescope")
