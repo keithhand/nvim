@@ -14,6 +14,7 @@ return {
 			gofumpt = true,
 		},
 	},
+	templ = {},
 	"golangci-lint",
 
 	lua_ls = {
