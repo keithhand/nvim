@@ -6,7 +6,9 @@ useful.
 ## Directory and File Structure
 
 ```text
-┌── lua
+┌── after
+├──── ftplugin               # Loaded when specific filetypes are detected
+├── lua
 ├──── keithhand              # Personal configuration files (autocmds, keymaps, sets)
 ├──── plugin                 # Setup for third-party plugins
 ├────── config               # Individual configuration for each plugin
