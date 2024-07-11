@@ -58,5 +58,6 @@ return {
 	},
 	"stylua",
 
+	marksman = {},
 	"markdownlint",
 }

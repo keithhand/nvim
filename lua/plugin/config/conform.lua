@@ -12,5 +12,6 @@ require("conform").setup({
 		lua = { "stylua" },
 		sh = { "shfmt" },
 		zsh = { "shfmt" },
+		markdown = { "markdownlint" },
 	},
 })
