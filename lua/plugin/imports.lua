@@ -281,4 +281,6 @@ return {
 			require("plugin.config.lualine")
 		end,
 	},
+
+	"JoosepAlviste/nvim-ts-context-commentstring",
 }

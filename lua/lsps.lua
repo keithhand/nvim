@@ -44,7 +44,13 @@ return {
 			gofumpt = true,
 		},
 	},
-	templ = {},
+	templ = {
+		settings = {
+			editor = {
+				formatOnSave = true,
+			},
+		},
+	},
 	"golangci-lint",
 
 	lua_ls = {
@@ -60,4 +66,14 @@ return {
 
 	marksman = {},
 	"markdownlint",
+
+	html = {
+		filetypes = { "html", "templ" },
+		init_options = {
+			provideFormatter = false,
+		},
+	},
+	htmx = {
+		filetypes = { "html", "templ" },
+	},
 }
